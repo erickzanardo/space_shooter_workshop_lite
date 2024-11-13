@@ -1,18 +1,28 @@
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
-import 'package:flame/palette.dart';
 import 'package:space_shooter_workshop/game.dart';
 
-class Enemy extends RectangleComponent with HasGameRef<SpaceShooterGame> {
+class Enemy extends SpriteAnimationComponent with HasGameRef<SpaceShooterGame> {
   Enemy({
     super.position,
   }) : super(
           anchor: Anchor.center,
           size: Vector2.all(16),
-          paint: BasicPalette.pink.paint(),
         );
 
   static const _speed = 50.0;
+
+  @override
+  Future<void> onLoad() async {
+    animation = await game.loadSpriteAnimation(
+      'alien_1.png',
+      SpriteAnimationData.sequenced(
+        amount: 4,
+        stepTime: 0.25,
+        textureSize: Vector2.all(16),
+      ),
+    );
+  }
 
   @override
   void update(double dt) {
