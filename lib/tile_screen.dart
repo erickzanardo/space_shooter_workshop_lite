@@ -61,7 +61,7 @@ class _TitleScreenState extends State<TitleScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
-                      flex: 6,
+                      flex: 5,
                       child: SizedBox(
                         width: 680,
                         child: Image.asset(
@@ -72,12 +72,26 @@ class _TitleScreenState extends State<TitleScreen> {
                       ),
                     ),
                     Expanded(
-                      child: Text(
-                        'Press any button to play',
-                        style: GoogleFonts.pressStart2p(
-                          fontSize: 16,
-                          color: const Color(0xff61d3e3),
-                        ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'Press any button to play',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.pressStart2p(
+                              fontSize: 16,
+                              color: const Color(0xff61d3e3),
+                            ),
+                          ),
+                          Text(
+                            'Move with WASD\nShoot with SPACEBAR',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.pressStart2p(
+                              fontSize: 12,
+                              color: const Color(0xff61d3e3),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
