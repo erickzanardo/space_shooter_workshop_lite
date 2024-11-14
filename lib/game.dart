@@ -17,7 +17,7 @@ class SpaceShooterGame extends FlameGame
           ),
         );
 
-  static final resolution = Vector2(256, 240);
+  static final resolution = Vector2(384, 320);
 
   @override
   FutureOr<void> onLoad() async {
@@ -30,7 +30,9 @@ class SpaceShooterGame extends FlameGame
         paint: BasicPalette.black.paint(),
       ),
       EnemySpawner(),
-      Player(),
+      Player(
+        position: Vector2(0, resolution.y / 2 - 48),
+      ),
     ]);
   }
 

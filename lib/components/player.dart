@@ -5,7 +5,7 @@ import 'package:space_shooter_workshop/game.dart';
 
 class Player extends SpriteAnimationComponent
     with HasGameRef<SpaceShooterGame> {
-  Player()
+  Player({super.position})
       : super(
           anchor: Anchor.center,
           size: Vector2.all(48),
