@@ -29,19 +29,27 @@ class Player extends SpriteAnimationComponent
       KeyboardListenerComponent(
         keyUp: {
           LogicalKeyboardKey.keyA: (_) {
-            _direction.x = 0;
+            if (_direction.x == -1) {
+              _direction.x = 0;
+            }
             return false;
           },
           LogicalKeyboardKey.keyD: (_) {
-            _direction.x = 0;
+            if (_direction.x == 1) {
+              _direction.x = 0;
+            }
             return false;
           },
           LogicalKeyboardKey.keyW: (_) {
-            _direction.y = 0;
+            if (_direction.y == -1) {
+              _direction.y = 0;
+            }
             return false;
           },
           LogicalKeyboardKey.keyS: (_) {
-            _direction.y = 0;
+            if (_direction.y == 1) {
+              _direction.y = 0;
+            }
             return false;
           },
           LogicalKeyboardKey.space: (_) {

@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame/palette.dart';
@@ -10,6 +11,11 @@ class Enemy extends RectangleComponent with HasGameRef<SpaceShooterGame> {
           anchor: Anchor.center,
           size: Vector2.all(16),
           paint: BasicPalette.pink.paint(),
+          children: [
+            RectangleHitbox(
+              size: Vector2.all(16),
+            ),
+          ],
         );
 
   static const _speed = 50.0;
