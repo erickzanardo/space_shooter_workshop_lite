@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'package:space_shooter_workshop/components/components.dart';
-import 'package:space_shooter_workshop/game.dart';
+import 'package:space_shooter_workshop/game/game.dart';
 
 class Player extends SpriteAnimationComponent
     with HasGameRef<SpaceShooterGame> {
@@ -29,19 +29,27 @@ class Player extends SpriteAnimationComponent
       KeyboardListenerComponent(
         keyUp: {
           LogicalKeyboardKey.keyA: (_) {
-            _direction.x = 0;
+            if (_direction.x == -1) {
+              _direction.x = 0;
+            }
             return false;
           },
           LogicalKeyboardKey.keyD: (_) {
-            _direction.x = 0;
+            if (_direction.x == 1) {
+              _direction.x = 0;
+            }
             return false;
           },
           LogicalKeyboardKey.keyW: (_) {
-            _direction.y = 0;
+            if (_direction.y == -1) {
+              _direction.y = 0;
+            }
             return false;
           },
           LogicalKeyboardKey.keyS: (_) {
-            _direction.y = 0;
+            if (_direction.y == 1) {
+              _direction.y = 0;
+            }
             return false;
           },
           LogicalKeyboardKey.space: (_) {

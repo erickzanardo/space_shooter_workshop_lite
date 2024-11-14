@@ -1,6 +1,7 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
-import 'package:space_shooter_workshop/game.dart';
+import 'package:space_shooter_workshop/game/game.dart';
 
 class Enemy extends SpriteAnimationComponent with HasGameRef<SpaceShooterGame> {
   Enemy({
@@ -8,6 +9,11 @@ class Enemy extends SpriteAnimationComponent with HasGameRef<SpaceShooterGame> {
   }) : super(
           anchor: Anchor.center,
           size: Vector2.all(16),
+          children: [
+            RectangleHitbox(
+              size: Vector2.all(16),
+            ),
+          ],
         );
 
   static const _speed = 50.0;

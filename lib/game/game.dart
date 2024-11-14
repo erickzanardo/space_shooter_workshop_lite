@@ -3,10 +3,13 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+import 'package:flame/palette.dart';
+import 'package:flutter/material.dart';
 import 'package:space_shooter_workshop/components/background.dart';
 import 'package:space_shooter_workshop/components/components.dart';
 
-class SpaceShooterGame extends FlameGame with HasKeyboardHandlerComponents {
+class SpaceShooterGame extends FlameGame
+    with HasKeyboardHandlerComponents, HasCollisionDetection {
   SpaceShooterGame()
       : super(
           camera: CameraComponent.withFixedResolution(
@@ -22,11 +25,21 @@ class SpaceShooterGame extends FlameGame with HasKeyboardHandlerComponents {
     await super.onLoad();
 
     world.addAll([
+      RectangleComponent(
+        size: resolution,
+        position: -resolution / 2,
+        paint: BasicPalette.black.paint(),
+      ),
       Background(
         position: -resolution / 2,
       ),
       EnemySpawner(),
       Player(),
     ]);
+  }
+
+  @override
+  Color backgroundColor() {
+    return Colors.grey[900]!;
   }
 }
