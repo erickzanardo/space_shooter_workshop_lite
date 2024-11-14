@@ -2,6 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:space_shooter_workshop/components/components.dart';
 import 'package:space_shooter_workshop/components/explosion.dart';
+import 'package:space_shooter_workshop/components/score_counter.dart';
 import 'package:space_shooter_workshop/game/game.dart';
 
 class Shoot extends SpriteAnimationComponent
@@ -52,6 +53,7 @@ class Shoot extends SpriteAnimationComponent
       other.removeFromParent();
       removeFromParent();
       gameRef.world.add(Explosion(position: other.position));
+      gameRef.world.firstChild<ScoreCounter>()?.increment();
     }
   }
 }

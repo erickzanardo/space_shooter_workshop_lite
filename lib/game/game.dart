@@ -7,6 +7,8 @@ import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:space_shooter_workshop/components/background.dart';
 import 'package:space_shooter_workshop/components/components.dart';
+import 'package:space_shooter_workshop/components/score_counter.dart';
+import 'package:space_shooter_workshop/components/shield_counter.dart';
 
 class SpaceShooterGame extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
@@ -18,7 +20,7 @@ class SpaceShooterGame extends FlameGame
           ),
         );
 
-  static final resolution = Vector2(256, 240);
+  static final resolution = Vector2(384, 320);
 
   @override
   FutureOr<void> onLoad() async {
@@ -33,8 +35,22 @@ class SpaceShooterGame extends FlameGame
       Background(
         position: -resolution / 2,
       ),
+      ScoreCounter(
+        position: Vector2(
+          -resolution.x / 2 + 8,
+          -resolution.y / 2 + 8,
+        ),
+      ),
+      ShieldCounter(
+        position: Vector2(
+          8,
+          -resolution.y / 2 + 8,
+        ),
+      ),
       EnemySpawner(),
-      Player(),
+      Player(
+        position: Vector2(0, resolution.y / 2 - 48),
+      ),
     ]);
   }
 

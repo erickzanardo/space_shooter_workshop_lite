@@ -34,10 +34,11 @@ class _TitleScreenState extends State<TitleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return RawKeyboardListener(
+    return Focus(
       focusNode: _focusNode,
-      onKey: (_) {
+      onKeyEvent: (_, __) {
         Navigator.of(context).push(GamePage.route());
+        return KeyEventResult.handled;
       },
       child: Scaffold(
         body: Stack(
@@ -61,10 +62,13 @@ class _TitleScreenState extends State<TitleScreen> {
                   children: [
                     Expanded(
                       flex: 6,
-                      child: Image.asset(
-                        'assets/images/banner.png',
-                        fit: BoxFit.contain,
-                        filterQuality: FilterQuality.none,
+                      child: SizedBox(
+                        width: 680,
+                        child: Image.asset(
+                          'assets/images/banner.png',
+                          fit: BoxFit.contain,
+                          filterQuality: FilterQuality.none,
+                        ),
                       ),
                     ),
                     Expanded(
